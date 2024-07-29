@@ -41,8 +41,8 @@ def plot_data_from_file(ax_temp, ax_rain, path, color):
 
 plt.style.use('seaborn-v0_8')
 fig, ax = plt.subplots(1,2)
-plot_data_from_file(ax[0], ax[1], 'weather_sitka_2021_simple.csv', 'blue')
-plot_data_from_file(ax[0], ax[1], 'weather_death_valley_2021_simple.csv', 'red')
+plot_data_from_file(ax[0], ax[1], 'weather_data/sitka_2021_simple.csv', 'blue')
+plot_data_from_file(ax[0], ax[1], 'weather_data/death_valley_2021_simple.csv', 'red')
 ax[0].set_title(f'Daily Temperatures', fontsize=16)
 ax[0].set_ylabel("Temperature (°C)", fontsize=12)
 ax[0].set_xlabel("")
