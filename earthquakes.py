@@ -1,7 +1,6 @@
 import io
 import json
 import plotly.express as px
-import numpy as np
 
 export_readable_data = False
 
@@ -31,7 +30,8 @@ for quake in earthquakes:
 
 fig = px.scatter_geo(
     lat=latitudes, lon=longitudes, size=magnitudes, color=magnitudes, color_continuous_scale='viridis',
-    title=json_data['metadata']['title'], labels={'color': 'Magnitude', 'size':'Magnitude', 'lat':'Latitude', 'lon':'Longitude'},
+    title=json_data['metadata']['title'],
+    labels={'color': 'Magnitude', 'size': 'Magnitude', 'lat': 'Latitude', 'lon': 'Longitude'},
     projection='natural earth', hover_name=titles)
 
 fig.show()

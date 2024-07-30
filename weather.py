@@ -16,15 +16,15 @@ def plot_data_from_file(ax_temp, ax_rain, path, color):
 
         # Read all data from the csv file into lists.
         # Note that this can be done only once on the reader object!
-        for dict in reader:
-            name = dict['NAME']
-            date = datetime.strptime(dict["DATE"], '%Y-%m-%d')
+        for data_set in reader:
+            name = data_set['NAME']
+            date = datetime.strptime(data_set["DATE"], '%Y-%m-%d')
             try:
                 # It is important to convert to float or int here as otherwise,
                 # the values stay strings and pyplot will mix up the y-axis ticks!
-                high = float(dict["TMAX"])
-                low = float(dict["TMIN"])
-                rainfall = float(dict["PRCP"])
+                high = float(data_set["TMAX"])
+                low = float(data_set["TMIN"])
+                rainfall = float(data_set["PRCP"])
             except ValueError:
                 print(f'Warning: data for date {date} in file {path} incomplete, skipping')
             else:
@@ -40,7 +40,7 @@ def plot_data_from_file(ax_temp, ax_rain, path, color):
 
 
 plt.style.use('seaborn-v0_8')
-fig, ax = plt.subplots(1,2)
+fig, ax = plt.subplots(1, 2)
 plot_data_from_file(ax[0], ax[1], 'weather_data/sitka_2021_simple.csv', 'blue')
 plot_data_from_file(ax[0], ax[1], 'weather_data/death_valley_2021_simple.csv', 'red')
 ax[0].set_title(f'Daily Temperatures', fontsize=16)

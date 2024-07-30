@@ -23,7 +23,9 @@ for result in possible_results:
 
 title = f"Results of rolling {len(dice)} dice {[f'D{die.num_sides}' for die in dice]} {num_rolls} times"
 labels = {'x': 'Result', 'y': 'Result count'}
-fig = px.bar(x=possible_results, y=result_counts, title=title, labels=labels, text=[f"{r*100/num_rolls}%" for r in result_counts])
+fig = px.bar(x=possible_results, y=result_counts, title=title, labels=labels,
+             text=[f"{r*100/num_rolls}%" for r in result_counts])
+
 fig.update_layout(xaxis_dtick=1)
 if export_instead_of_show:
     fig.write_html('rolling_dice.html')

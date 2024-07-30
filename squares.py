@@ -44,4 +44,3 @@ if export_instead_of_show:
 else:
     # show the figure in the matpolotlib window
     plt.show()
-
