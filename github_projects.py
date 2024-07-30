@@ -2,26 +2,15 @@ import requests
 import json
 import io
 import plotly.express as px
+from util import request_json
 
 export_response = False
 
-
-def request(url, headers):
-    with requests.get(url=url, headers=headers) as response:
-        result = response.json()
-
-    if response.status_code != 200:
-        print('Error: API request failed')
-        exit(-1)
-
-    return result
-
-
-rate_limit_response = request('https://api.github.com/rate_limit', {})
+rate_limit_response = request_json('https://api.github.com/rate_limit', {})
 print(f'Rate limit: {rate_limit_response['resources']['core']['remaining']}/'
       f'{rate_limit_response['resources']['core']['limit']}')
 
-repos_response = request(
+repos_response = request_json(
     'https://api.github.com/search/repositories?q=language:python+sort:stars+stars:>10000',
     {'Accept': 'application/vnd.github.v3+json'})
 
